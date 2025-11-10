@@ -22,7 +22,7 @@ class Program
 
         if (countUpVar > countDounVar) { Console.WriteLine("Winnes is thread up"); }
         if (countUpVar < countDounVar) { Console.WriteLine("Winnes is thread down"); }
-        else { Console.WriteLine("Draw"); }
+        if(countUpVar == countDounVar) { Console.WriteLine("Draw"); }
     }
     
     private static void CountUpThreadA()
