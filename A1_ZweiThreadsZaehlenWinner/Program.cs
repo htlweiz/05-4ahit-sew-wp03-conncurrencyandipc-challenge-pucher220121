@@ -19,6 +19,10 @@ class Program
 
         countUp.Join();
         countDown.Join();
+
+        if (countUpVar > countDounVar) { Console.WriteLine("Winnes is thread up"); }
+        if (countUpVar < countDounVar) { Console.WriteLine("Winnes is thread down"); }
+        else { Console.WriteLine("Draw"); }
     }
     
     private static void CountUpThreadA()
@@ -30,7 +34,6 @@ class Program
 
             if (countDounVar == countUpVar)
             {
-                Console.WriteLine("Var Up: " + countUpVar);
                 stop = true;
                 break;
             }
@@ -48,7 +51,6 @@ class Program
 
             if (countDounVar == countUpVar)
             {
-                Console.WriteLine("Var Down: " + countDounVar);
                 stop = true;
                 break;
             }
