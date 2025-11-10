@@ -4,6 +4,7 @@ using System.Threading;
 namespace A2_RaceConditionBank;
 public class BankAccount
 {
+    static Object _lock = new Object();
     private int balance;
    
     
@@ -12,14 +13,20 @@ public class BankAccount
         balance = initial; 
     }
     
-    public void Deposit(int amount) 
+    public void Deposit(int amount)
     {
-        balance += amount;
+        lock (_lock)
+        {
+            balance += amount;
+        }
     }
     
     public void Withdraw(int amount) 
     {
-        balance -= amount;
+        lock (_lock)
+        {
+            balance -= amount;
+        }
     }
     
     public int GetBalance() 

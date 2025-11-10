@@ -5,7 +5,7 @@ namespace A2_RaceConditionBank;
 
 class Program
 {
-    //static Object _lock = new Object();
+    static Object _lock = new Object();
     public static void Main(string[] args)
     {
         List<Thread> threads = new List<Thread>();
