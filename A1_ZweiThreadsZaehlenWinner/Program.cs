@@ -5,7 +5,9 @@ namespace A1_ZweiThreadsZaehlenWinner;
 
 class Program
 {
-   
+    static int countUpVar = 0;
+    static int countDounVar = 100;
+    static bool stop = false;
     
     public static void Main(string[] args)
     {
@@ -21,11 +23,37 @@ class Program
     
     private static void CountUpThreadA()
     {
-        for (int i = 0; i <= 100; i++) { Console.WriteLine(i);  Thread.Sleep(100); };
+        for (int i = 0; i <= 100; i++)
+        {
+            countUpVar = i;
+            Console.WriteLine(i);
+
+            if (countDounVar == countUpVar)
+            {
+                Console.WriteLine("Var Up: " + countUpVar);
+                stop = true;
+                break;
+            }
+            if (stop == true) break;
+            Thread.Sleep(100); 
+        }
     }
     
     private static void CountDownThreadB()
     {
-       for (int i = 100; i >= 0; i--) { Console.WriteLine(i); Thread.Sleep(100); };
+       for (int i = 100; i >= 0; i--)
+        {
+            countDounVar = i;
+            Console.WriteLine(i);
+
+            if (countDounVar == countUpVar)
+            {
+                Console.WriteLine("Var Down: " + countDounVar);
+                stop = true;
+                break;
+            }
+            if (stop == true) break;
+            Thread.Sleep(100); 
+        }
     }
 }
